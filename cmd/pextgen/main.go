@@ -10,71 +10,14 @@ import (
 )
 
 // pextByte handles single-byte PEXT operation
-func pextByte(b, m uint8) uint8 {
-	var result, bitPos uint8
-	for i := uint8(0); i < 8; i++ {
-		if m&(1<<i) != 0 {
-			if b&(1<<i) != 0 {
-				result |= 1 << bitPos
-			}
-			bitPos++
-		}
-	}
-	return result
-}
+func pextByte(b, m uint8) uint8 { _ = "STUB: not implemented"; return 0 }
 
 // pdepByte handles single-byte PDEP operation
-func pdepByte(b, m uint8) uint8 {
-	var result, bitPos uint8
-	for i := uint8(0); i < 8; i++ {
-		if m&(1<<i) != 0 {
-			if b&(1<<bitPos) != 0 {
-				result |= 1 << i
-			}
-			bitPos++
-		}
-	}
-	return result
-}
+func pdepByte(b, m uint8) uint8 { _ = "STUB: not implemented"; return 0 }
 
 func generateTable(name string, data interface{}, comment string) string {
-	var buf bytes.Buffer
-
-	if comment != "" {
-		fmt.Fprintf(&buf, "// %s\n", comment)
-	}
-	fmt.Fprintf(&buf, "var %s = ", name)
-
-	switch v := data.(type) {
-	case [256]uint8:
-		buf.WriteString("[256]uint8{")
-		for i, val := range v {
-			if i%16 == 0 {
-				buf.WriteString("\n\t")
-			}
-			fmt.Fprintf(&buf, "%d,", val)
-		}
-		buf.WriteString("\n}")
-
-	case [256][256]uint8:
-		buf.WriteString("[256][256]uint8{")
-		for i, row := range v {
-			if i%4 == 0 {
-				buf.WriteString("\n\t")
-			}
-			buf.WriteString("{")
-			for j, val := range row {
-				if j%16 == 0 {
-					buf.WriteString("\n\t\t")
-				}
-				fmt.Fprintf(&buf, "%d,", val)
-			}
-			buf.WriteString("\n\t},")
-		}
-		buf.WriteString("\n}")
-	}
-
-	return buf.String()
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func main() {
